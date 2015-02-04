@@ -1,4 +1,4 @@
-## Logmetro
+# Logmetro
 
 __NOTE:__ still in development, this README describes the first goal of Logmetro. No implementation yet.
 

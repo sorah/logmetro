@@ -1,0 +1,43 @@
+# including future plans, just a dream, ignore it
+
+# vim: ft=yaml
+grouping:
+  key:
+    service: service
+    host: server
+
+items:
+  apptime:
+    type: numeric
+    key: apptime
+    multiply: 1000
+  rps:
+    type: count
+  status:
+    type: valuecount
+    key: status
+
+services:
+  _default:
+    # time in record or accepted time?
+    realtime: true
+    intervals:
+      - interval: 5m
+        retention: 3d
+      - interval: 1m
+        retention: 2d
+      - interval: 5s
+        retention: 12h
+  greatapp:
+    subgroups:
+      grouping:
+        key:
+          service: subservice
+          host: subhost
+      service:
+      host:
+        proxy:
+          exclude_from_parent: true
+
+api:
+  cors: '*.local'

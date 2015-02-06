@@ -34,8 +34,9 @@ here's a plan...
 
 inputs:
   - type: tcp
-    listen: [::]:9755
-    format: ltsv
+    options:
+      listen: [::]:9755
+      format: ltsv
 
 web:
   listen: [::]:9754
@@ -53,16 +54,19 @@ services:
     items:
       reqtime:
         type: numeric
-        key: reqtime
-        multiply: 1000
+        options:
+          key: reqtime
+          multiply: 1000
       requests:
         type: count
       rps:
         type: count
-        round: 1s
+        options:
+          round: 1s
       status:
         type: valuecount
-        key: status
+        options:
+          key: status
 
     # Use time in log?
     time: time
@@ -77,7 +81,7 @@ services:
       retention: 12h
 
     # monitor in sub groups (e.g. status for each server separately)
-    grouping:
+    groups:
       - key: server
         filter: proxy
       - key: server

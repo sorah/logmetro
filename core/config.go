@@ -1,5 +1,10 @@
 package core
 
+import (
+	"gopkg.in/yaml.v2"
+	"ioutil"
+)
+
 type Config struct {
 	Inputs          []*ConfigInput
 	Outputs         []*ConfigOutput
@@ -52,4 +57,17 @@ type ConfigServiceGroup struct {
 type ConfigOutput struct {
 	Type    string
 	Options interface{}
+}
+
+func LoadConfigFromFile(path string) (config *Config, err error) {
+	bs, err := ioutil.ReadFile(path)
+	if err != nil {
+		return &Config{}, err
+	}
+	return ParseConfig(bs)
+}
+
+func ParseConfig(configByte []byte) (config *Config, err error) {
+	config := make(Config)
+	err := yaml.Unmarshal(configByte, &config)
 }

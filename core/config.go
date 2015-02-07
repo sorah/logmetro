@@ -2,7 +2,7 @@ package core
 
 import (
 	"gopkg.in/yaml.v2"
-	"ioutil"
+	"io/ioutil"
 )
 
 type Config struct {
@@ -43,6 +43,10 @@ type ConfigServiceItem struct {
 	Options interface{}
 }
 
+type ConfigServiceDashboard struct {
+	Type string
+}
+
 type ConfigServiceWindow struct {
 	Length    string
 	Retention string
@@ -68,6 +72,7 @@ func LoadConfigFromFile(path string) (config *Config, err error) {
 }
 
 func ParseConfig(configByte []byte) (config *Config, err error) {
-	config := make(Config)
-	err := yaml.Unmarshal(configByte, &config)
+	config = &Config{}
+	err = yaml.Unmarshal(configByte, &config)
+	return
 }

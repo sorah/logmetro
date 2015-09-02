@@ -1,23 +1,23 @@
 # Logmetro
 
-__NOTE:__ still in development, this README describes the first goal of Logmetro. No implementation yet.
+__NOTE:__ still in development, this README describes the initial goals of Logmetro. No implementation yet.
 
 ## Features
 
-- Monitor log stream (such as http access logs) in realtime
-  - requests per second, average response time, counting status codes...
+- Monitor log streams (such as HTTP access logs) in realtime
+  - EG: requests per second, average response time, counting status codes...
 - Awesome dashboard in browser
 - Useful HTTP API
 
-## What we don't
+## Things we don't intend to implement
 
 - higher accuracy
   - data might not be perfect.
-- persist data
-  - export to other datastore using Output feature.
+- persistant data
+  - export to other datastores using an Output feature.
 - complex event stream processing
   - We do only simple aggregation (count something...)
-  - Consider using https://github.com/norikra/norikra for such case
+  - Consider using https://github.com/norikra/norikra for such cases
 
 ## Usage
 
